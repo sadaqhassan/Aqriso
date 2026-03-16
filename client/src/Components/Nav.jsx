@@ -8,16 +8,16 @@ const Nav = () => {
   return (
     <div>
         {/* //desktop */}
-        <div className='hidden md:flex justify-between px-20 py-2 bg-blue-900'>
+        <div className='hidden md:flex justify-between px-20 py-4 text-gray-800  bg-cyan-100'>
             <p>Logo</p>
             <div className='hidden md:flex gap-4 items-center'>
-            <NavLink>
+            <NavLink to={'/'} className={({isActive})=>isActive ? "bg-gray-700 text-white px-3 py-1 rounded" : "text-gray-800 p-2" }>
                 Home
-            </NavLink>
-            <NavLink>
+            </NavLink> 
+            <NavLink to={'/posts'} className={({isActive})=>isActive ? "bg-gray-700 text-white px-3 py-1 rounded" : "text-gray-800 p-2" }>
                 Posts
             </NavLink>
-            <NavLink>
+            <NavLink to={'/profile'} className={({isActive})=>isActive ? "bg-gray-700 text-white px-3 py-1 rounded" : "text-gray-800 p-2" }>
                 Profile
             </NavLink>
             </div>
@@ -27,24 +27,25 @@ const Nav = () => {
 
 
         {/* //mobile */}
-        <div className='flex justify-between px-20 py-2 bg-blue-900'>
+        <div className='md:hidden flex justify-between px-4 py-4  text-gray-800  bg-cyan-100'>
             <p>Logo</p>
 
             <div className='flex gap-4 items-center'>
                 <button onClick={()=>setIsOpen(!isOpen)}><MenuIcon/></button>
                 <button>Login</button>
             </div>
+                
         </div>
         {
             isOpen &&
-            <div className='flex md:hidden flex-col gap-4 items-start'>
-            <NavLink>
+            <div className='flex md:hidden flex-col  py-5 items-start bg-gray-100 space-y-4 pl-4'>
+            <NavLink to={'/'} className={({isActive})=>isActive ? "bg-gray-700 text-white px-3 py-1 rounded" : "text-gray-800 p-2" }>
                 Home
             </NavLink>
-            <NavLink>
+            <NavLink to={'/posts'} className={({isActive})=>isActive ? "bg-gray-700 text-white px-3 py-1 rounded" : "text-gray-800 p-2" }>
                 Posts
             </NavLink>
-            <NavLink>
+            <NavLink to={'/profile'} className={({isActive})=>isActive ? "bg-gray-700 text-white px-3 py-1 rounded" : "text-gray-800 p-2" }>
                 Profile
             </NavLink>
             </div>
