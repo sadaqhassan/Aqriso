@@ -18,7 +18,7 @@ export const registerApi = async (req,res) => {
 
         const hashed = await bcrypt.hash(password,10)
 
-        const newUser = new user({
+        const newUser = new theUser({
             name,
             email,
             password:hashed
@@ -28,6 +28,7 @@ export const registerApi = async (req,res) => {
 
         return res.status(200).json({success:false, message:"register successFully"})
     } catch (error) {
+        console.log(error.message)
         res.status(500).json({success:false, message:"server error"})
     }
 }
@@ -38,6 +39,7 @@ export const loginApi = async (req,res) => {
     const {email,password} = req.body
 
     if(!email || !password){
+        
         res.status(400).json({success:false,message:"! fill all inputs"})
     }
 
@@ -59,5 +61,6 @@ export const loginApi = async (req,res) => {
         return res.cookie("accessToken",token,{httpOnly:true}).status(200).json({success:false, message:"register successFully"})
     } catch (error) {
         res.status(500).json({success:false, message:"server error"})
+        console.log(error.message)
     }
 }
